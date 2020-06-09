@@ -17,6 +17,7 @@ Set next_additive to 0.
 #include <Windows.h>
 using namespace std;
 
+//Hàm kiểm tra số lẻ
 int OddsToOne(char src)
 {
     switch (src)
@@ -33,19 +34,20 @@ int OddsToOne(char src)
     }
 }
 
+//Hàm chia đôi giá trị trong chuỗi
 string StrDivTwo(string src)
 {
     int additive = 0;
     int next_additive = 0;
     for (int i = 0; i < src.length(); i++)
     {
-        next_additive = OddsToOne(src[i]) * 5;
-        src[i] = (((src[i] - '0') / 2) + additive) + '0';
+        next_additive = OddsToOne(src[i]) * 5;              //gán biến nhớ tiếp theo, số lẻ thì bằng 5, chẵn thì 0
+        src[i] = (((src[i] - '0') / 2) + additive) + '0';   //lấy chữ số thứ i chia 2 và cộng thêm biến nhớ
         additive = next_additive;
     }
     while (src[0] == '0')
     {
-        src.erase(src.begin());
+        src.erase(src.begin());     //xóa số 0 đầu dòng
     }
     return src;
 }
@@ -53,18 +55,14 @@ string StrDivTwo(string src)
 string StrDecToBin(string src)
 {
     string result = "";
-    /*while (!src.empty())
-    {
-        result = OddsToOne((src[src.length() - 1] - '0')) + '0';
-        src = StrDivTwo(src);
-    }*/
+
     while (!src.empty())
     {
-        result.push_back((src[src.length() - 1] - '0') % 2 + '0');
-        src = StrDivTwo(src);
+        result.push_back((src[src.length() - 1] - '0') % 2 + '0'); //chuyển số cuối sang bit
+        src = StrDivTwo(src); //chia đôi giá trị trong chuỗi số
     }
 
-    reverse(result.begin(), result.end());
+    reverse(result.begin(), result.end()); //đảo ngược chuỗi
     return result;
 }
 

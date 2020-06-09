@@ -1,8 +1,9 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string.h>
 #include <Windows.h>
 using namespace std;
 
+//Hàm chuyển đổi chuỗi thập lục phân sang chuỗi nhị phân
 string StrHexToBin(string hex)
 {
     string temp;
