@@ -61,14 +61,31 @@ string StrBinSHR(string src, int n)
 	return result;
 }
 
+string StrBinROL(string src)
+{
+	char temp = src[0];
+	string result = StrBinSHL(src, 1);
+	result[result.length() - 1] = temp;
+	return result;
+}
+
+string StrBinROR(string src)
+{
+	char temp = src[src.length() - 1];
+	string result = StrBinSHR(src, 1);
+	result[0] = temp;
+	return result;
+}
 int main()
 {
-	string bin1 = "1011000";
+	string bin1 = "11001010";
 	string bin2 = "110000101";
 	cout << StrBinSHL(bin1, 1) << endl;
 	cout << StrBinSHR(bin1, 1) << endl;
 	cout << StrBinSHL(bin2, 1) << endl;
 	cout << StrBinSHR(bin2, 1) << endl;
+	cout << StrBinROL(bin1) << endl;
+	cout << StrBinROR(bin1) << endl;
 	system("pause");
 	return 0;
 }
